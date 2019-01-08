@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--配置Spring 直接创建bean对象-->
+    <bean id="customerService" class="com.hand.spring.service.Impl.CustomerServiceImpl">
+        <property name="iCustomerDao" ref="customerDao"></property>
+    </bean>
+
+    <bean id="customerDao" class="com.hand.spring.dao.Impl.CustomerDaoImpl"></bean>
+
+    <!--配置Spring 使用静态工厂创建bean对象-->
+    <bean id="staticCustomer" class="com.hand.spring.factory.StaticFactory" factory-method="getCustomerService">
+        <property name="iCustomerDao" ref="customerDao"></property>
+    </bean>
+
+    <!--配置Spring 使用实例工厂创建bean对象-->
+    <bean id="instanceFactory" class="com.hand.spring.factory.InstanceFactory">
+    </bean>
+    <bean id="instanceCustomer" factory-bean="instanceFactory" factory-method="getCustomerService">
+        <property name="iCustomerDao" ref="customerDao"></property>
+    </bean>
+
+</beans>
+
+

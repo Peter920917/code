@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- Scans within the base package of the application for @Component classes to configure as beans -->
+    <context:component-scan base-package="com.hand.spring.service"/>
+    <context:component-scan base-package="com.hand.spring.dao"/>
+
+    <!--    <bean id="departmentService" class="com.hand.spring.service.Impl.DepartmentServiceImpl">
+            <property name="departmentDao" ref="departmentDao"></property>
+        </bean>-->
+
+    <!--    <bean id="departmentDao" class="com.hand.spring.dao.impl.DepartmentDaoImpl">
+            <property name="dataSource" ref="dataSource"></property>
+        </bean>-->
+
+    <!--<bean id="departmentDO" class="com.hand.spring.bean.DepartmentDO"></bean>-->
+
+    <!--<import resource="classpath*:database/spring-datasource-mysql.xml"></import>-->
+</beans>

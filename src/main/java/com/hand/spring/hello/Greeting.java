@@ -1,4 +1,4 @@
-package hello;
+package com.hand.spring.hello;
 
 public class Greeting {
     private final long id;

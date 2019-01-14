@@ -1,7 +1,5 @@
 package com.hand.spring.factory;
 
-import com.hand.spring.dao.ICustomerDao;
-import com.hand.spring.service.ICustomerService;
 import com.hand.spring.service.Impl.CustomerServiceImpl;
 
 public class InstanceFactory {

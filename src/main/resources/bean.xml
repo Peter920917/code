@@ -1,15 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!-- Scans within the base package of the application for @Component classes to configure as beans -->
+    <!--<context:component-scan base-package="com.hand.spring" />-->
+
 
     <!--配置Spring 直接创建bean对象-->
     <bean id="customerService" class="com.hand.spring.service.Impl.CustomerServiceImpl">
         <property name="iCustomerDao" ref="customerDao"></property>
     </bean>
 
-    <bean id="customerDao" class="com.hand.spring.dao.Impl.CustomerDaoImpl"></bean>
+    <bean id="customerDO" class="com.hand.spring.bean.CustomerDO">
+        <!--list-->
+        <!--        <property name="list">
+                    <list>
+                        <bean id="departmentDO" class="com.hand.spring.bean.DepartmentDO">
+                            <property name="deptId" value="123"></property>
+                            <property name="deptName" value="test1"></property>
+                            <property name="deptNo" value="test2"></property>
+                        </bean>
+                    </list>
+                </property>-->
+
+        <!--listFactoryBean-->
+        <!--<property name="list">
+            <bean class="org.springframework.beans.factory.config.ListFactoryBean">
+                <property name="targetListClass">
+                    <value>java.util.ArrayList</value>
+                </property>
+                <property name="sourceList">
+                    <list>
+                        <value>one</value>
+                        <value>2</value>
+                        <value>three</value>
+                    </list>
+                </property>
+            </bean>
+        </property>-->
+
+        <!--util-->
+        <property name="list">
+            <util:list list-class="java.util.ArrayList">
+                <value>one</value>
+                <value>2</value>
+                <value>three</value>
+            </util:list>
+        </property>
+    </bean>
+
+    <bean id="helloWorldService" class="com.hand.spring.service.Impl.HelloWorldService">
+    </bean>
+
+    <bean id="customerDao" class="com.hand.spring.dao.impl.CustomerDaoImpl"></bean>
 
     <!--配置Spring 使用静态工厂创建bean对象-->
     <bean id="staticCustomer" class="com.hand.spring.factory.StaticFactory" factory-method="getCustomerService">
@@ -21,6 +70,16 @@
     </bean>
     <bean id="instanceCustomer" factory-bean="instanceFactory" factory-method="getCustomerService">
         <property name="iCustomerDao" ref="customerDao"></property>
+    </bean>
+
+    <!--spring继承-->
+    <bean id="baseCustomerMalaysia" class="com.hand.spring.bean.SetupCustomerDO">
+        <property name="country" value="Malaysia"></property>
+    </bean>
+
+    <bean id="customerBean" parent="baseCustomerMalaysia">
+        <property name="action" value="buy"></property>
+        <property name="type" value="1"></property>
     </bean>
 
 </beans>

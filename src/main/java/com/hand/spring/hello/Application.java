@@ -1,4 +1,4 @@
-package hello;
+package com.hand.spring.hello;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

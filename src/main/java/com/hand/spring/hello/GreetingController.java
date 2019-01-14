@@ -1,4 +1,4 @@
-package hello;
+package com.hand.spring.hello;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

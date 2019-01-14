@@ -1,4 +1,4 @@
-package hello;
+package com.hand.spring.hello;
 
 import static org.junit.Assert.*;
 import static org.hamcrest.Matchers.*;

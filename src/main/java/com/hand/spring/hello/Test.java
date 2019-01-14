@@ -1,6 +1,4 @@
-package hello;
-
-import sun.reflect.Reflection;
+package com.hand.spring.hello;
 
 import java.io.File;
 import java.io.IOException;

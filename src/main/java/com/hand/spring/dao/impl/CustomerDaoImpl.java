@@ -1,4 +1,4 @@
-package com.hand.spring.dao.Impl;
+package com.hand.spring.dao.impl;
 
 import com.hand.spring.dao.ICustomerDao;
 
